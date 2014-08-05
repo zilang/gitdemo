@@ -7,6 +7,10 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    
+    
 
     <application
         android:allowBackup="true"
@@ -24,6 +28,24 @@
         </activity>
         
         <activity android:name="com.jany.phoneguard.app.MenuActivity"></activity>
+        
+        <service android:name="com.jany.phoneguard.app.engine.SystemService"/>
+        
+        <receiver android:name="com.jany.phoneguard.app.receiver.BootCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.jany.phoneguard.app.receiver.RemoteServiceSMSReceiver">
+            <intent-filter android:priority="999">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.jany.phoneguard.app.receiver.ProcessAlarmReceiver">
+            <intent-filter >
+                <action android:name="com.jany.phoneguard.app.action.PROCESS_ALARM"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

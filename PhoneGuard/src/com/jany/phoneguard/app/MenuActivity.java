@@ -1,9 +1,7 @@
 package com.jany.phoneguard.app;
 
 import android.app.Activity;
-import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +13,21 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * 
+ * 找回手机和保护数据流程：
+ * step 1. 手机丢失
+ * step 2. 使用Android手机守护神软件设置的目标号码的手机
+ * step 3. 根据使用协议，使用目标手机号码发送获取手机具体位置的短信
+ * step 4. 根据使用协议，使用目标手机号码发送获取手机通信录、短信、通话记录、照片、音频、视频等
+ * step 5. 根据使用协议，使用目标手机号码发送删除手机通信录、短信、通话记录、照片、音频、视频等
+ * @author miki
+ *
+ */
 public class MenuActivity extends Activity {
 	
 	private static final String TAG = "MenuActivity";
+	public static final String STOP_SERVICE = "1";	//停止服务标志位
 
 	private LayoutInflater inflater;
 	private Gallery mGallery;
@@ -103,16 +113,6 @@ public class MenuActivity extends Activity {
 			imageView.setImageResource(ids[position%ids.length]);
 			imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);	// 自适应xy
 			return v;
-		}
-		
-		
-		
-		/**
-		 * 返回适配器实际的长度
-		 * @return
-		 */
-		public int getActualCount() {
-			return ids.length;
 		}
 		
 		private final class CacheView {
