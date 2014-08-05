@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tv_login_prompt_str">Please Enter Your Personal Password</string>
+    <string name="title">Login to the System</string>
+	<string name="btn_login_str">Login</string>
+	<string name="btn_cancel_str">Cancel</string>
+	<string name="passwordIncorrect">The password you entered is not right,You still have </string>
+	<string name="timesRemained"> times to have a try</string>
+	<string name="pwd_error">The Password is empty</string>
+    
+</resources>
